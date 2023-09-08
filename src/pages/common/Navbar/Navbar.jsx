@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 
@@ -15,12 +15,16 @@ const Navbar = () => {
       .catch(() => {});
   };
 
-
   const menuList = (
     <>
       <ul className="menu bg-base-200 lg:menu-horizontal rounded-box">
         <li className="border border-collapse">
-          <Link to={"/"}>
+          <NavLink
+            to={"/"}
+            className={`' ' + ${(isActive) => {
+              isActive ? "bg-orange-600" : "";
+            }}`}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -37,10 +41,39 @@ const Navbar = () => {
             </svg>
             Home
             <span className="badge badge-sm">99+</span>
-          </Link>
+          </NavLink>
+        </li>
+        <li className="border border-collapse ">
+          <NavLink
+            to={"/add"}
+            className={`' ' + ${(isActive) => {
+              isActive ? "bg-orange-600" : "";
+            }}`}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            Add Data
+          </NavLink>
         </li>
         <li className="border border-collapse">
-          <Link to={"/all"}>
+          <NavLink
+            className={(isActive) => ({
+              color: isActive ? "bg-orange-600" : "",
+            })}
+            to={"/all"}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -56,11 +89,16 @@ const Navbar = () => {
               />
             </svg>
             All Employee
-          </Link>
+          </NavLink>
         </li>
 
         <li className="border border-collapse">
-          <Link to={"/attendants"}>
+          <NavLink
+            to={"/attendants"}
+            className={`' ' + ${(isActive) => {
+              isActive ? "bg-orange-600" : "";
+            }}`}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -77,14 +115,7 @@ const Navbar = () => {
             </svg>
             Attendants
             <span className="badge badge-sm badge-warning">NEW</span>
-          </Link>
-        </li>
-
-        <li className="border border-collapse">
-          <Link to={"/"}>
-            Stats
-            <span className="badge badge-xs badge-info"></span>
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </>

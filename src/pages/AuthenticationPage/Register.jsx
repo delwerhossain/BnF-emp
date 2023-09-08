@@ -93,7 +93,7 @@ const Register = () => {
           />
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <div className="card-body text-primary">
+          <div className="card-body text-orange-600">
             <h1 className="text-3xl text-center font-bold">Sign Up</h1>
             <form id="form" onSubmit={handleRegister} className="card-body">
               <div className="form-control">

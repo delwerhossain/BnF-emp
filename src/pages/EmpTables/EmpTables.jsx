@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import EmpRow from "./EmpRow";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const EmpTables = () => {
   const [toys, setToys] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [axiosSecure] = useAxiosSecure();
 
   const toyData = () => {
-    fetch("https://server-toy-marketplace.vercel.app/toys")
-      .then((res) => res.json())
-      .then((data) => {
-        setToys(data.slice(0, 20));
-      });
+    axiosSecure.get("/toys").then((data) => {
+      setToys(data.data.slice(0, 20));
+    });
   };
   useEffect(() => {
     toyData();
@@ -18,11 +18,9 @@ const EmpTables = () => {
 
   const handleSearch = () => {
     if (searchText) {
-      fetch(`https://server-toy-marketplace.vercel.app/toySearch/${searchText}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setToys(data);
-        });
+      axiosSecure.get(`/toySearch/${searchText}`).then((data) => {
+        setToys(data.data);
+      });
     } else {
       toyData();
     }
@@ -67,7 +65,7 @@ const EmpTables = () => {
             placeholder="Search…"
             onChange={(e) => setSearchText(e.target.value)}
             onKeyDown={handleSearch}
-            className="input text-primary font-semibold input-bordered"
+            className="input text-orange-600 font-semibold input-bordered"
           />
           <button onClick={handleSearch} className="btn btn-square">
             <svg

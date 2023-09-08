@@ -7,6 +7,7 @@ import Register from "../pages/AuthenticationPage/Register";
 import PrivateRoute from "./PrivateRoute";
 import Attendants from "../pages/Attendants/Attendants";
 import EmpTables from "../pages/EmpTables/EmpTables";
+import EmployeeAdd from "../pages/EmployeeAdd/EmployeeAdd";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/all",
+        path: "all",
         element: (
           <PrivateRoute>
             <EmpTables />
@@ -27,7 +28,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/attendants",
+        path: "attendants",
         element: (
           <PrivateRoute>
             <Attendants />
@@ -35,11 +36,15 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/login",
+        path: "add",
+        element: <EmployeeAdd />,
+      },
+      {
+        path: "login",
         element: <Login />,
       },
       {
-        path: "/register",
+        path: "register",
         element: <Register />,
       },
     ],

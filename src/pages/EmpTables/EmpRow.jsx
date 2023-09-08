@@ -5,13 +5,13 @@ const ToyRow = ({ toy, index }) => {
   const { subCategory, name, price, availableQuantity, sellerName, _id } = toy;
 
   return (
-    <tr className="text-primary hover:text-white hover">
-      <td className="font-medium">{index + 1}</td>
-      <td className="font-medium">{sellerName}</td>
-      <td className="font-medium">{name}</td>
-      <td className="font-medium">{subCategory}</td>
-      <td className="font-medium">{price}</td>
-      <td className="font-medium">{availableQuantity}</td>
+    <tr className="text-xl font-medium bg-black  hover">
+      <td className="">{index + 1}</td>
+      <td className="">{sellerName}</td>
+      <td className="">{name}</td>
+      <td className="">{subCategory}</td>
+      <td className="">{price}</td>
+      <td className="">{availableQuantity}</td>
       <td>
         <Link to={`/toy/${_id}`}>
           <button className="btn btn-outline btn-primary">View Details</button>
