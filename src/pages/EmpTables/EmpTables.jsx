@@ -8,7 +8,8 @@ const EmpTables = () => {
   const [axiosSecure] = useAxiosSecure();
 
   const toyData = () => {
-    axiosSecure.get("/toys").then((data) => {
+    axiosSecure.get("/employee").then((data) => {
+      console.log(data);
       setToys(data.data.slice(0, 20));
     });
   };
@@ -23,36 +24,6 @@ const EmpTables = () => {
       });
     } else {
       toyData();
-    }
-  };
-
-  ////////// sort ////////
-
-  useEffect(() => {
-    fetchToys();
-  }, []);
-
-  const fetchToys = async () => {
-    try {
-      const response = await fetch(
-        "https://server-toy-marketplace.vercel.app/toys/all"
-      ); // Modify the URL as per your backend API endpoint
-      const data = await response.json();
-      setToys(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const sortToys = async (sortOrder) => {
-    try {
-      const response = await fetch(
-        `https://server-toy-marketplace.vercel.app/toys/all?sortOrder=${sortOrder}`
-      ); // Modify the URL as per your backend API endpoint
-      const data = await response.json();
-      setToys(data);
-    } catch (error) {
-      console.error(error);
     }
   };
 

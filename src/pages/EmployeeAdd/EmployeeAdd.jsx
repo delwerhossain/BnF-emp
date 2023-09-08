@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import toast, { Toaster } from "react-hot-toast";
 
 const EmployeeAdd = () => {
   const navigate = useNavigate();
+  const [axiosSecure] = useAxiosSecure()
   // state
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -24,11 +27,19 @@ const EmployeeAdd = () => {
       endTime,
       sortCode,
     };
-    console.log(data);
+    axiosSecure.post('/employee', data)
+      .then(data => {
+        console.log(data.data.acknowledged);
+      if (data.data.acknowledged) {
+        toast.success("success message");
+      }
+    })
+    
   };
 
   return (
     <div className="hero min-h-screen bg-white">
+      <Toaster />
       <div className="hero-content flex-col lg:flex-row">
         <div className="w-1/2 mr-12">
           <img
