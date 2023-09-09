@@ -3,7 +3,7 @@ import Main from "../Layout/Main/Main";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
 import Login from "../pages/AuthenticationPage/Login";
-import Register from "../pages/AuthenticationPage/Register";
+// import Register from "../pages/AuthenticationPage/Register";
 import PrivateRoute from "./PrivateRoute";
 import Attendants from "../pages/Attendants/Attendants";
 import EmpTables from "../pages/EmpTables/EmpTables";
@@ -17,7 +17,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: (
+          <PrivateRoute>
+            <EmployeeAdd />
+          </PrivateRoute>
+        ),
       },
       {
         path: "all",
@@ -36,17 +40,21 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "add",
-        element: <EmployeeAdd />,
+        path: "home",
+        element: (
+          <PrivateRoute>
+            <Home />
+          </PrivateRoute>
+        ),
       },
       {
         path: "login",
         element: <Login />,
       },
-      {
-        path: "register",
-        element: <Register />,
-      },
+      // {
+      //   path: "register",
+      //   element: <Register />,
+      // },
     ],
   },
 ]);

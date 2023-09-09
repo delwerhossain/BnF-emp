@@ -4,6 +4,31 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast, { Toaster } from "react-hot-toast";
 
 const EmployeeAdd = () => {
+// timestamp
+   const [startTime, setStartTime] = useState("");
+   const [endTime, setEndTime] = useState("");
+
+   const handleStart = (event) => {
+     const value = event.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+
+     if (value.length > 2) {
+       setStartTime(value.slice(0, 2) + ":" + value.slice(2));
+     } else {
+       setStartTime(value);
+     }
+   };
+   const handleEnd = (event) => {
+     const value = event.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+
+     if (value.length > 2) {
+       setEndTime(value.slice(0, 2) + ":" + value.slice(2));
+     } else {
+       setEndTime(value);
+     }
+   };
+
+  
+  //
   const navigate = useNavigate();
   const [axiosSecure] = useAxiosSecure();
   // state
@@ -16,8 +41,8 @@ const EmployeeAdd = () => {
     const name = form.name.value;
     const number = form.number.value;
     const blood = form.blood.value;
-    const startTime = form.startTime.value;
-    const endTime = form.endTime.value;
+    // const startTime = form.startTime.value;
+    // const endTime = form.endTime.value;
     const sortCode = form.sortCode.value;
     const data = {
       name,
@@ -94,12 +119,20 @@ const EmployeeAdd = () => {
                 <label className="label">
                   <span className="label-text">Working Time Start</span>
                 </label>
+
                 <input
                   required
-                  type="time"
+                  value={startTime}
+                  onChange={handleStart}
+                  maxLength={5}
+                  type="text"
                   name="startTime"
                   placeholder="Add Working Time start"
                   className="input input-bordered"
+                  step="3600"
+                  min="00:00"
+                  max="23:59"
+                  pattern="[0-2][0-9]:[0-5][0-9]"
                 />
               </div>
               <div className="form-control">
@@ -108,10 +141,17 @@ const EmployeeAdd = () => {
                 </label>
                 <input
                   required
-                  type="time"
+                  value={endTime}
+                  onChange={handleEnd}
+                  maxLength={5}
+                  type="text"
                   name="endTime"
                   placeholder="Add Working Time End"
                   className="input input-bordered"
+                  step="3600"
+                  min="00:00"
+                  max="23:59"
+                  pattern="[0-2][0-9]:[0-5][0-9]"
                 />
               </div>
               <div className="form-control">

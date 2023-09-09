@@ -1,6 +1,6 @@
 const ToyRow = ({ toy, index }) => {
   // console.log(toy);
-  const { name, number, blood, startTime, endTime, sortCode, _id } = toy;
+  const { name, number, blood, startTime, endTime, sortCode } = toy;
 
   return (
     <tr className="text-xl font-medium bg-black  hover">

@@ -20,7 +20,7 @@ const Navbar = () => {
       <ul className=" menu bg-base-200  lg:menu-horizontal rounded-box">
         <li className="border border-collapse">
           <NavLink
-            to={"/"}
+            to={"/home"}
             className={`' ' + ${(isActive) => {
               isActive ? "bg-orange-600" : "";
             }}`}
@@ -45,7 +45,7 @@ const Navbar = () => {
         </li>
         <li className="border border-collapse ">
           <NavLink
-            to={"/add"}
+            to={"/"}
             className={`' ' + ${(isActive) => {
               isActive ? "bg-orange-600" : "";
             }}`}
