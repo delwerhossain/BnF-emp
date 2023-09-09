@@ -5,10 +5,10 @@ import toast, { Toaster } from "react-hot-toast";
 
 const EmployeeAdd = () => {
   const navigate = useNavigate();
-  const [axiosSecure] = useAxiosSecure()
+  const [axiosSecure] = useAxiosSecure();
   // state
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  // const [success, setSuccess] = useState("");
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -27,14 +27,16 @@ const EmployeeAdd = () => {
       endTime,
       sortCode,
     };
-    axiosSecure.post('/employee', data)
-      .then(data => {
-        console.log(data.data.acknowledged);
+    axiosSecure.post("/employee", data).then((data) => {
+      console.log(data.data.acknowledged);
       if (data.data.acknowledged) {
         toast.success("success message");
+        navigate("/all");
+      } else {
+        toast.error("error ");
+        setError("error ");
       }
-    })
-    
+    });
   };
 
   return (
@@ -134,7 +136,7 @@ const EmployeeAdd = () => {
               <div className="divider">OR</div>
             </form>
             <p className="text-2xl text-red-600">{error}</p>
-            <p className="text-2xl text-teal-600">{success}</p>
+            {/* <p className="text-2xl text-teal-600">{success}</p> */}
 
             <p className="font-semibold underline text-secondary text-center">
               <Link to={"/"}> Home page</Link>

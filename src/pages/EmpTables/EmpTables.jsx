@@ -28,7 +28,7 @@ const EmpTables = () => {
   };
 
   return (
-    <div className="overflow-x-auto mt-10">
+    <div className="overflow-x-auto lg:overflow-hidden mt-10">
       <div className="form-control my-8">
         <div className="input-group flex justify-center">
           <input
@@ -67,12 +67,13 @@ const EmpTables = () => {
         <thead>
           <tr>
             <th>#</th>
-            <th>Seller</th>
-            <th>Toy Name</th>
-            <th>Sub Category</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Action</th>
+            <th>Name</th>
+            <th>Number </th>
+            <th>Blood Group</th>
+            <th>start time</th>
+            <th>End Time</th>
+            <th>Sort Code</th>
+            {/* <th>Action</th> */}
           </tr>
         </thead>
         <tbody>

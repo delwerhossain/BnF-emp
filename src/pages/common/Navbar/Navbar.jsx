@@ -17,7 +17,7 @@ const Navbar = () => {
 
   const menuList = (
     <>
-      <ul className="menu bg-base-200 lg:menu-horizontal rounded-box">
+      <ul className=" menu bg-base-200  lg:menu-horizontal rounded-box">
         <li className="border border-collapse">
           <NavLink
             to={"/"}
@@ -121,7 +121,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="fixed top-0 z-50 bg-orange-100 navbar ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -147,7 +147,13 @@ const Navbar = () => {
             {menuList}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <a className="btn btn-ghost normal-case text-xl">
+          <img
+            className="lg:w-56 w-40 "
+            src="http://bnfcorporate.com/image/logo.webp"
+            alt="bnfcorporate logo"
+          />
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">{menuList}</div>
       <div className="navbar-end">
